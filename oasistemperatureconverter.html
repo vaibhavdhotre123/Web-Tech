@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title align-items-center>Temperature Converter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+
+      input[type="number"] {
+        width: 200px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      }
+
+      button[type="submit"] {
+        background-color: #664caf;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #8e3e6f;
+      }
+
+      #result {
+        margin-top: 20px;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Temperature Converter</h1>
+
+    <form onsubmit="convertTemperature(event)">
+      <label for="inputTemp">Input Temperature:</label>
+      <input type="number" id="inputTemp" placeholder="Enter temperature" required />
+
+      <label for="selectFrom">From:</label>
+      <select id="selectFrom" required>
+        <option value="">Select unit</option>
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+      </select>
+
+      <label for="selectTo">To:</label>
+      <select id="selectTo" required>
+        <option value="">Select unit</option>
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+        <option value="kelvin">Kelvin</option>
+      </select>
+
+      <button type="submit">Convert</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+      function convertTemperature(event) {
+        event.preventDefault(); // prevent form submission
+
+        const inputTemp = document.getElementById("inputTemp").value;
+        const fromUnit = document.getElementById("selectFrom").value;
+        const toUnit = document.getElementById("selectTo").value;
+
+        if (fromUnit === "celsius" && toUnit === "fahrenheit") {
+          const result = (inputTemp * 9) / 5 + 32;
+          document.getElementById("result").textContent = `${inputTemp}°C = ${result}°F`;
+        } else if (fromUnit === "celsius" && toUnit === "kelvin") {
+          const result = Number(inputTemp) + 273.15;
+          document.getElementById("result").textContent = `${inputTemp}°C = ${result}K`;
+        } else if (fromUnit === "fahrenheit" && toUnit === "celsius") {
+          const result = ((inputTemp))}
