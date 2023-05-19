@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form with CAPTCHA</title>
+ 
+</head>
+<body>
+  <div class="contact-form">
+    <h1>Contact Form</h1>
+    <form>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" rows="2" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" rows="2" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <div class="captcha-container">
+        <img src="captcha.jpg" alt="CAPTCHA Image" class="captcha-image">
+        <input type="text" id="captcha" name="captcha" class="captcha-input" required>
+      </div>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
+  <style>
+    .contact-form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .captcha-container {
+      margin-bottom: 300px;
+    }
+    .captcha-image {
+      display: block;
+      margin-bottom: 5px;
+      width: 200px;
+  height: 121px;
+    }
+    .captcha-input {
+      width: 150px;
+    }
+    .submit-btn {
+      margin: 0 auto;
+      width: 200px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+    
+    function validateCaptcha(event) {
+      event.preventDefault();
+      const captchaInput = document.getElementById("captcha");
+      const captchaValue = captchaInput.value;
+
+
+      if (captchaValue === "") {
+        alert("CAPTCHA validation successful. Submitting the form.");
+      } else {
+        alert("CAPTCHA validation failed. Please try again.");
+      }
+      captchaInput.value = "";
+    }
+
+    
+    const contactForm = document.querySelector("form");
+    contactForm.addEventListener("submit", validateCaptcha);
+  </script>
+</body>
+</html>
